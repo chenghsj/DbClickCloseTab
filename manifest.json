@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+
+  "name": "Double Middle-Click Close Tab",
+  "description": "Double click mouse middle button to close current tab.",
+  "version": "1.0.1",
+  "icons": {
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": ["tabs", "scripting"],
+  "host_permissions": ["<all_urls>"]
+}
