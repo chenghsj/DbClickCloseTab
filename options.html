@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Double Middle-Click Close Tab Options</title>
+</head>
+<style>
+    body {
+        padding-left: 10px;
+    }
+
+    input {
+        width: 30px;
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    button {
+        width: 50px;
+        height: 25px;
+        border-radius: 25px;
+        border: none;
+    }
+
+    button:hover {
+        background: rgb(224, 224, 224);
+
+    }
+
+    button:active {
+        background: rgb(187, 187, 187)
+    }
+</style>
+
+<body>
+
+    <p>Click time interval:&nbsp<span><input type="number" value="400"></span>&nbsp ms</p>
+
+
+    <button id="save">Save</button>
+    <div id="status"></div>
+
+
+    <script src="options.js"></script>
+</body>
+
+</html>
