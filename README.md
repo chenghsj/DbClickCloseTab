@@ -1,4 +1,5 @@
 # dblMClickExt
-Edge extension of double middle click to close tab
+Chrome extension of double middle click to close tab
 
-https://microsoftedge.microsoft.com/addons/detail/double-middleclick-close/apalhnbfahnnddopdjjoinfccnlkobgm
+edge: https://microsoftedge.microsoft.com/addons/detail/double-middleclick-close/apalhnbfahnnddopdjjoinfccnlkobgm
+chrome: https://chrome.google.com/webstore/detail/double-middle-click-close/meepebiimbmfopmaempaogpnnigjjcjg?hl=zh-TW
