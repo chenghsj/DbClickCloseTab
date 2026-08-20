@@ -1,0 +1,113 @@
+name: Build Chromium release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Chromium package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.12.0
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check tag version
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          TAG_VERSION: ${{ github.ref_name }}
+        run: |
+          set -Eeuo pipefail
+
+          package_version="$(node -p "require('./package.json').version")"
+          if [[ "$TAG_VERSION" != "v$package_version" ]]; then
+            printf 'Tag %s does not match package version %s\n' "$TAG_VERSION" "$package_version" >&2
+            exit 1
+          fi
+
+      - name: Check and build extension
+        run: npm run check
+
+      - name: Validate Chromium manifest
+        run: |
+          set -Eeuo pipefail
+
+          package_version="$(node -p "require('./package.json').version")"
+          manifest_version="$(node -p "require('./dist/manifest.json').version")"
+
+          if [[ "$manifest_version" != "$package_version" ]]; then
+            printf 'Manifest version %s does not match package version %s\n' "$manifest_version" "$package_version" >&2
+            exit 1
+          fi
+
+          node -e "const manifest = require('./dist/manifest.json'); if (!manifest.background?.service_worker) process.exit(1)"
+
+      - name: Package Chromium extension
+        run: |
+          set -Eeuo pipefail
+
+          version="$(node -p "require('./package.json').version")"
+          archive="DbClickCloseTab-$version-chromium.zip"
+
+          mkdir -p release
+          (cd dist && zip -r "../release/$archive" .)
+          (cd release && sha256sum "$archive" > SHA256SUMS)
+
+      - name: Upload Chromium package
+        uses: actions/upload-artifact@v4
+        with:
+          name: DbClickCloseTab-chromium
+          path: |
+            release/*.zip
+            release/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 30
+
+  release:
+    name: Create GitHub Release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download Chromium package
+        uses: actions/download-artifact@v4
+        with:
+          name: DbClickCloseTab-chromium
+          path: release
+
+      - name: Create release and attach package
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_VERSION: ${{ github.ref_name }}
+        run: |
+          set -Eeuo pipefail
+
+          if gh release view "$TAG_VERSION" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            gh release upload "$TAG_VERSION" release/*.zip release/SHA256SUMS \
+              --repo "$GITHUB_REPOSITORY" \
+              --clobber
+          else
+            gh release create "$TAG_VERSION" release/*.zip release/SHA256SUMS \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "$TAG_VERSION" \
+              --generate-notes \
+              --verify-tag
+          fi

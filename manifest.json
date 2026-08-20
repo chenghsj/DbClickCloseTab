@@ -3,7 +3,7 @@
 
   "name": "Double Middle-Click Close Tab",
   "description": "Double click mouse middle button to close current tab.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "icons": {
     "128": "icon.png"
   },
@@ -11,11 +11,13 @@
     "service_worker": "bg.js"
   },
   "action": {
-    "default_icon": "icon.png"
+    "default_icon": "icon.png",
+    "default_title": "Double Middle-Click Close Tab",
+    "default_popup": "popup.html"
   },
   "options_ui": {
     "page": "options.html",
-    "open_in_tab": false
+    "open_in_tab": true
   },
   "permissions": ["scripting", "storage"],
   "host_permissions": ["<all_urls>"]
