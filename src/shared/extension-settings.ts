@@ -1,4 +1,5 @@
 import { DEFAULT_DISABLED, normalizeDisabled } from "@/shared/disabled";
+import { DEFAULT_LANGUAGE, LANGUAGES, normalizeLanguage, type Language } from "@/shared/language";
 import {
   DEFAULT_INTERVAL,
   normalizeInterval,
@@ -14,6 +15,7 @@ import {
 
 export interface ExtensionSettings {
   disabled: boolean;
+  language: Language;
   theme: Theme;
   timeInterval: number;
 }
@@ -45,12 +47,14 @@ export interface ExtensionSettingsModule {
 
 export const DEFAULT_EXTENSION_SETTINGS: ExtensionSettings = Object.freeze({
   disabled: DEFAULT_DISABLED,
+  language: DEFAULT_LANGUAGE,
   theme: DEFAULT_THEME,
   timeInterval: DEFAULT_INTERVAL,
 });
 
 export const EXTENSION_SETTING_KEYS = [
   "disabled",
+  "language",
   "theme",
   "timeInterval",
 ] as const satisfies readonly SettingKey[];
@@ -58,6 +62,7 @@ export const EXTENSION_SETTING_KEYS = [
 function isValidStoredValue(key: SettingKey, value: unknown): boolean {
   if (value === undefined) return true;
   if (key === "disabled") return typeof value === "boolean";
+  if (key === "language") return LANGUAGES.includes(value as Language);
   if (key === "theme") return THEMES.includes(value as Theme);
   return parseStoredInterval(value) !== null;
 }
@@ -65,12 +70,16 @@ function isValidStoredValue(key: SettingKey, value: unknown): boolean {
 function normalizeStoredSettings(values: StoredSettings): ExtensionSettings {
   return {
     disabled: normalizeDisabled(values.disabled),
+    language: normalizeLanguage(values.language),
     theme: normalizeTheme(values.theme),
     timeInterval: normalizeInterval(values.timeInterval),
   };
 }
 
 function validateChange(change: ExtensionSettingsChange): void {
+  if (change.language !== undefined && !LANGUAGES.includes(change.language)) {
+    throw new TypeError("Invalid language setting.");
+  }
   if (change.disabled !== undefined && typeof change.disabled !== "boolean") {
     throw new TypeError("Invalid disabled setting.");
   }
@@ -93,9 +102,11 @@ function snapshotsEqual(
   return (
     left.status === right.status &&
     left.confirmed.disabled === right.confirmed.disabled &&
+    left.confirmed.language === right.confirmed.language &&
     left.confirmed.theme === right.confirmed.theme &&
     left.confirmed.timeInterval === right.confirmed.timeInterval &&
     left.settings.disabled === right.settings.disabled &&
+    left.settings.language === right.settings.language &&
     left.settings.theme === right.settings.theme &&
     left.settings.timeInterval === right.settings.timeInterval
   );
@@ -105,7 +116,7 @@ export function createExtensionSettings(
   storage: SettingsStorageAdapter,
 ): ExtensionSettingsModule {
   let snapshot: ExtensionSettingsSnapshot = {
-    confirmed: { disabled: false, theme: false, timeInterval: false },
+    confirmed: { disabled: false, language: false, theme: false, timeInterval: false },
     settings: DEFAULT_EXTENSION_SETTINGS,
     status: "loading",
   };

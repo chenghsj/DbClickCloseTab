@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import { ExtensionEnabledField } from "@/components/extension-enabled-field";
-import { ThemeSettingField } from "@/components/theme-setting-field";
+import { SettingsNavigation } from "@/components/settings-navigation";
 
 describe("settings save-state layout", () => {
   it("does not insert transient status content while settings are saving", () => {
@@ -14,11 +14,9 @@ describe("settings save-state layout", () => {
           saveState="saving"
           setEnabled={vi.fn()}
         />
-        <ThemeSettingField
-          loaded
-          saveState="saving"
-          setTheme={vi.fn()}
-          theme="auto"
+        <SettingsNavigation
+          themeSetting={{ loaded: true, saveState: "saving", setTheme: vi.fn(), theme: "auto", resolvedTheme: "light" }}
+          languageSetting={{ loaded: true, saveState: "saving", setLanguage: vi.fn(), language: "auto" }}
         />
       </>,
     );

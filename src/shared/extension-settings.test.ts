@@ -69,9 +69,10 @@ describe("extension settings module", () => {
     const snapshot = await settings.whenReady();
 
     expect(snapshot).toEqual({
-      confirmed: { disabled: false, theme: false, timeInterval: true },
+      confirmed: { disabled: false, language: true, theme: false, timeInterval: true },
       settings: {
         disabled: false,
+        language: "auto",
         theme: "auto",
         timeInterval: 650,
       },
@@ -111,8 +112,8 @@ describe("extension settings module", () => {
     storage.readResult.resolve({ disabled: false, theme: "light", timeInterval: 700 });
 
     await expect(settings.whenReady()).resolves.toEqual({
-      confirmed: { disabled: true, theme: true, timeInterval: true },
-      settings: { disabled: true, theme: "dark", timeInterval: 700 },
+      confirmed: { disabled: true, language: true, theme: true, timeInterval: true },
+      settings: { disabled: true, language: "auto", theme: "dark", timeInterval: 700 },
       status: "ready",
     });
   });
@@ -125,14 +126,14 @@ describe("extension settings module", () => {
 
     storage.readResult.reject(new Error("unavailable"));
     await expect(settings.whenReady()).resolves.toEqual({
-      confirmed: { disabled: false, theme: false, timeInterval: false },
+      confirmed: { disabled: false, language: false, theme: false, timeInterval: false },
       settings: DEFAULT_EXTENSION_SETTINGS,
       status: "error",
     });
 
     storage.emit({ disabled: true });
     expect(settings.getSnapshot()).toEqual({
-      confirmed: { disabled: true, theme: false, timeInterval: false },
+      confirmed: { disabled: true, language: false, theme: false, timeInterval: false },
       settings: { ...DEFAULT_EXTENSION_SETTINGS, disabled: true },
       status: "ready",
     });
@@ -204,7 +205,7 @@ describe("extension settings module", () => {
     storage.readResult.reject(new Error("unavailable"));
 
     await expect(settings.whenReady()).resolves.toEqual({
-      confirmed: { disabled: true, theme: false, timeInterval: false },
+      confirmed: { disabled: true, language: false, theme: false, timeInterval: false },
       settings: { ...DEFAULT_EXTENSION_SETTINGS, disabled: true },
       status: "ready",
     });
@@ -218,7 +219,7 @@ describe("extension settings module", () => {
     storage.emit({ theme: "sepia" });
     storage.readResult.reject(new Error("unavailable"));
     await expect(settings.whenReady()).resolves.toEqual({
-      confirmed: { disabled: false, theme: false, timeInterval: false },
+      confirmed: { disabled: false, language: false, theme: false, timeInterval: false },
       settings: DEFAULT_EXTENSION_SETTINGS,
       status: "error",
     });
@@ -228,7 +229,7 @@ describe("extension settings module", () => {
 
     storage.emit({ theme: "dark" });
     expect(settings.getSnapshot()).toEqual({
-      confirmed: { disabled: false, theme: true, timeInterval: false },
+      confirmed: { disabled: false, language: false, theme: true, timeInterval: false },
       settings: { ...DEFAULT_EXTENSION_SETTINGS, theme: "dark" },
       status: "ready",
     });

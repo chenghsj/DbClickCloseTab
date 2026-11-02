@@ -7,6 +7,7 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { t, type MessageKey } from "@/shared/i18n";
 import {
   MAX_INTERVAL,
   MIN_INTERVAL,
@@ -21,13 +22,13 @@ function clampInterval(interval: number): number {
   return Math.min(MAX_INTERVAL, Math.max(MIN_INTERVAL, interval));
 }
 
-const saveMessages: Record<IntervalSaveState, string> = {
-  loading: "Loading setting…",
-  saving: "Saving…",
-  saved: "Saved",
-  invalid: `Enter a whole number from ${MIN_INTERVAL} to ${MAX_INTERVAL}.`,
-  "load-error": "Couldn’t load the saved interval. Enter a value to try again.",
-  "save-error": "Couldn’t save. Change the value to try again.",
+const saveMessages: Record<IntervalSaveState, MessageKey> = {
+  loading: "intervalLoading",
+  saving: "saving",
+  saved: "saved",
+  invalid: "intervalInvalid",
+  "load-error": "intervalLoadError",
+  "save-error": "intervalSaveError",
 };
 
 interface DragState {
@@ -131,25 +132,25 @@ export function IntervalSettingField({
         <div className="min-w-0">
           <label
             htmlFor="time-interval"
-            title="Drag left or right to adjust"
+            title={t("intervalDrag")}
             aria-disabled={writeInFlight}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerCancel={clearDrag}
             className={cn(
-              "touch-pan-y select-none whitespace-nowrap text-sm font-semibold text-card-foreground",
+              "touch-pan-y select-none text-sm font-semibold text-card-foreground",
               writeInFlight ? "cursor-wait" : "cursor-ew-resize",
             )}
           >
-            Double-click interval
+            {t("interval")}
           </label>
           {compact ? null : (
             <p
               id="interval-help"
               className="mt-0.5 text-xs leading-snug text-muted-foreground"
             >
-              {MIN_INTERVAL}–{MAX_INTERVAL} ms · Drag label to adjust.
+              {t("intervalHelp", [String(MIN_INTERVAL), String(MAX_INTERVAL)])}
             </p>
           )}
         </div>
@@ -198,7 +199,7 @@ export function IntervalSettingField({
           aria-live="polite"
           className="mt-2 text-sm font-medium text-destructive"
         >
-          {saveMessages[saveState]}
+          {t(saveMessages[saveState], [String(MIN_INTERVAL), String(MAX_INTERVAL)])}
         </p>
       ) : null}
     </div>

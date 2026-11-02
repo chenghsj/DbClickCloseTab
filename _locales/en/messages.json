@@ -1,0 +1,112 @@
+{
+  "language": {
+    "message": "en",
+    "description": "BCP 47 language tag for the translated document."
+  },
+  "extensionName": {
+    "message": "Double Middle-Click Close Tab"
+  },
+  "extensionDescription": {
+    "message": "Double-click the middle mouse button to close the current tab."
+  },
+  "shortName": {
+    "message": "Double Middle-Click"
+  },
+  "optionsTitle": {
+    "message": "Double Middle-Click Close Tab Options"
+  },
+  "optionsSubtitle": {
+    "message": "Customize behavior, appearance, and double-click timing."
+  },
+  "enableExtension": {
+    "message": "Enable extension"
+  },
+  "enableHelp": {
+    "message": "Allow double middle-click to close tabs."
+  },
+  "enableError": {
+    "message": "Couldn’t update the extension state. Try again."
+  },
+  "theme": {
+    "message": "Theme"
+  },
+  "switchToLight": { "message": "Switch to light theme" },
+  "switchToDark": { "message": "Switch to dark theme" },
+  "themeHelp": {
+    "message": "Follow your system or choose a fixed appearance."
+  },
+  "themeAuto": {
+    "message": "Automatic"
+  },
+  "themeLight": {
+    "message": "Light"
+  },
+  "themeDark": {
+    "message": "Dark"
+  },
+  "themeError": {
+    "message": "Couldn’t save the theme. Try again."
+  },
+  "interval": {
+    "message": "Double-click interval"
+  },
+  "intervalDrag": {
+    "message": "Drag left or right to adjust"
+  },
+  "intervalHelp": {
+    "message": "$minimum$–$maximum$ ms · Drag label to adjust.",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoading": {
+    "message": "Loading setting…"
+  },
+  "saving": {
+    "message": "Saving…"
+  },
+  "saved": {
+    "message": "Saved"
+  },
+  "intervalInvalid": {
+    "message": "Enter a whole number from $minimum$ to $maximum$.",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoadError": {
+    "message": "Couldn’t load the saved interval. Enter a value to try again."
+  },
+  "intervalSaveError": {
+    "message": "Couldn’t save. Change the value to try again."
+  },
+  "githubLabel": {
+    "message": "View Double Middle-Click on GitHub"
+  },
+  "appearanceAndLanguage": {
+    "message": "Appearance and language"
+  },
+  "languageLabel": {
+    "message": "Language"
+  },
+  "languageAuto": {
+    "message": "Browser language"
+  },
+  "languageError": {
+    "message": "Couldn’t save the language. Try again."
+  }
+}

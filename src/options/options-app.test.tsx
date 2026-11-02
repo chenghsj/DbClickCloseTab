@@ -22,14 +22,15 @@ describe("OptionsApp", () => {
     await act(() => settings.whenReady());
 
     const input = screen.getByRole("spinbutton", { name: "Double-click interval" });
-    const theme = screen.getByRole("combobox", { name: "Theme" });
+    const theme = screen.getByRole("button", { name: "Switch to dark theme" });
     expect(input).toHaveValue(400);
     const unit = screen.getByText("ms", { exact: true });
     expect(unit.parentElement).toHaveAttribute("data-slot", "input-with-suffix");
     expect(unit.parentElement).toContainElement(input);
     expect(unit.parentElement).toHaveClass("flex", "h-8", "rounded-lg");
     expect(unit.parentElement).toHaveClass("w-32", "shrink-0");
-    expect(theme).toHaveClass("h-8", "w-32", "shrink-0");
+    expect(theme).toHaveClass("size-8");
+    expect(theme.closest("nav")).toBeInTheDocument();
     expect(unit).not.toHaveClass("absolute");
     expect(unit.parentElement?.lastElementChild).toBe(unit);
     expect(input.className).not.toContain("appearance:textfield");

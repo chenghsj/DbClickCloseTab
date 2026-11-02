@@ -181,11 +181,9 @@ describe("PopupApp", () => {
     await act(() => settings.whenReady());
     const enableSwitch = screen.getByRole("switch", { name: "Enable extension" });
     expect(enableSwitch).toBeChecked();
-    expect(screen.getByText("Ready")).toBeInTheDocument();
     fireEvent.click(enableSwitch);
     await act(async () => { await Promise.resolve(); await Promise.resolve(); });
     expect(enableSwitch).not.toBeChecked();
-    expect(screen.getByText("Paused")).toBeInTheDocument();
     expect(storage.getStoredSettings().disabled).toBe(true);
   });
 
@@ -198,7 +196,6 @@ describe("PopupApp", () => {
 
     const enableSwitch = screen.getByRole("switch", { name: "Enable extension" });
     expect(enableSwitch).not.toBeChecked();
-    expect(screen.getByText("Paused")).toBeInTheDocument();
 
     fireEvent.click(enableSwitch);
     await act(async () => {
@@ -207,7 +204,7 @@ describe("PopupApp", () => {
     });
 
     expect(storage.getStoredSettings().disabled).toBe(false);
-    expect(screen.getByText("Ready")).toBeInTheDocument();
+    expect(enableSwitch).toBeChecked();
   });
 
   it("saves the next interval edit after an unrelated unconfirmed snapshot", async () => {
