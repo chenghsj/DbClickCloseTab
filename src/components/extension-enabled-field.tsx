@@ -1,4 +1,5 @@
 import { Switch } from "@/components/ui/switch";
+import { t } from "@/shared/i18n";
 import type { ExtensionSaveState } from "@/shared/settings-state";
 
 interface ExtensionEnabledFieldProps {
@@ -26,14 +27,14 @@ export function ExtensionEnabledField({
             htmlFor="enable-extension"
             className="text-sm font-semibold text-card-foreground"
           >
-            Enable extension
+            {t("enableExtension")}
           </label>
           {compact ? null : (
             <p
               id="enable-help"
               className="mt-0.5 text-xs leading-snug text-muted-foreground"
             >
-              Allow double middle-click to close tabs.
+              {t("enableHelp")}
             </p>
           )}
         </div>
@@ -51,7 +52,7 @@ export function ExtensionEnabledField({
           aria-live="polite"
           className="mt-2 text-xs font-medium text-destructive"
         >
-          Couldn’t update the extension state. Try again.
+          {t("enableError")}
         </p>
       ) : null}
     </div>

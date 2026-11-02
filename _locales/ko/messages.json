@@ -1,0 +1,112 @@
+{
+  "language": {
+    "message": "ko",
+    "description": "BCP 47 language tag for the translated document."
+  },
+  "extensionName": {
+    "message": "가운데 버튼 두 번 클릭으로 탭 닫기"
+  },
+  "extensionDescription": {
+    "message": "마우스 가운데 버튼을 두 번 클릭하면 현재 탭을 닫을 수 있습니다."
+  },
+  "shortName": {
+    "message": "가운데 버튼으로 탭 닫기"
+  },
+  "optionsTitle": {
+    "message": "가운데 버튼으로 탭 닫기 — 설정"
+  },
+  "optionsSubtitle": {
+    "message": "활성화 상태, 테마, 두 번 클릭 간격을 설정하세요."
+  },
+  "enableExtension": {
+    "message": "확장 프로그램 켜기"
+  },
+  "enableHelp": {
+    "message": "가운데 버튼을 두 번 클릭하여 탭을 닫습니다."
+  },
+  "enableError": {
+    "message": "활성화 상태를 변경하지 못했습니다. 다시 시도하세요."
+  },
+  "theme": {
+    "message": "테마"
+  },
+  "switchToLight": { "message": "밝은 테마로 전환" },
+  "switchToDark": { "message": "어두운 테마로 전환" },
+  "themeHelp": {
+    "message": "시스템 설정을 따르거나 테마를 선택하세요."
+  },
+  "themeAuto": {
+    "message": "자동"
+  },
+  "themeLight": {
+    "message": "밝게"
+  },
+  "themeDark": {
+    "message": "어둡게"
+  },
+  "themeError": {
+    "message": "테마를 저장하지 못했습니다. 다시 시도하세요."
+  },
+  "interval": {
+    "message": "두 번 클릭 간격"
+  },
+  "intervalDrag": {
+    "message": "좌우로 드래그하여 조정"
+  },
+  "intervalHelp": {
+    "message": "$minimum$~$maximum$밀리초 · 라벨을 드래그하여 조정하세요.",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoading": {
+    "message": "설정 불러오는 중…"
+  },
+  "saving": {
+    "message": "저장 중…"
+  },
+  "saved": {
+    "message": "저장됨"
+  },
+  "intervalInvalid": {
+    "message": "$minimum$~$maximum$ 사이의 정수를 입력하세요.",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoadError": {
+    "message": "저장된 간격을 불러오지 못했습니다. 값을 입력하여 다시 시도하세요."
+  },
+  "intervalSaveError": {
+    "message": "저장하지 못했습니다. 값을 변경하여 다시 시도하세요."
+  },
+  "githubLabel": {
+    "message": "GitHub에서 이 확장 프로그램 보기"
+  },
+  "appearanceAndLanguage": {
+    "message": "모양 및 언어"
+  },
+  "languageLabel": {
+    "message": "언어"
+  },
+  "languageAuto": {
+    "message": "브라우저 언어"
+  },
+  "languageError": {
+    "message": "언어를 저장하지 못했습니다. 다시 시도하세요."
+  }
+}

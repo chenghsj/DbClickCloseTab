@@ -1,0 +1,112 @@
+{
+  "language": {
+    "message": "zh-Hant",
+    "description": "BCP 47 language tag for the translated document."
+  },
+  "extensionName": {
+    "message": "雙擊中鍵關閉分頁"
+  },
+  "extensionDescription": {
+    "message": "在網頁上連按兩下滑鼠中鍵，即可關閉目前分頁。"
+  },
+  "shortName": {
+    "message": "雙擊中鍵關閉分頁"
+  },
+  "optionsTitle": {
+    "message": "雙擊中鍵關閉分頁設定"
+  },
+  "optionsSubtitle": {
+    "message": "自訂啟用狀態、外觀與雙擊判定間隔。"
+  },
+  "enableExtension": {
+    "message": "啟用擴充功能"
+  },
+  "enableHelp": {
+    "message": "允許連按兩下滑鼠中鍵關閉分頁。"
+  },
+  "enableError": {
+    "message": "無法更新啟用狀態，請再試一次。"
+  },
+  "theme": {
+    "message": "主題"
+  },
+  "switchToLight": { "message": "切換為淺色主題" },
+  "switchToDark": { "message": "切換為深色主題" },
+  "themeHelp": {
+    "message": "跟隨系統，或選擇固定的外觀。"
+  },
+  "themeAuto": {
+    "message": "自動"
+  },
+  "themeLight": {
+    "message": "淺色"
+  },
+  "themeDark": {
+    "message": "深色"
+  },
+  "themeError": {
+    "message": "無法儲存主題，請再試一次。"
+  },
+  "interval": {
+    "message": "雙擊間隔"
+  },
+  "intervalDrag": {
+    "message": "左右拖曳即可調整"
+  },
+  "intervalHelp": {
+    "message": "$minimum$～$maximum$ 毫秒 · 拖曳標籤可調整。",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoading": {
+    "message": "正在載入設定…"
+  },
+  "saving": {
+    "message": "正在儲存…"
+  },
+  "saved": {
+    "message": "已儲存"
+  },
+  "intervalInvalid": {
+    "message": "請輸入 $minimum$ 到 $maximum$ 之間的整數。",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoadError": {
+    "message": "無法載入已儲存的間隔，請輸入數值以重試。"
+  },
+  "intervalSaveError": {
+    "message": "無法儲存，請修改數值以重試。"
+  },
+  "githubLabel": {
+    "message": "在 GitHub 查看雙擊中鍵關閉分頁"
+  },
+  "appearanceAndLanguage": {
+    "message": "外觀與語言"
+  },
+  "languageLabel": {
+    "message": "語言"
+  },
+  "languageAuto": {
+    "message": "跟隨瀏覽器"
+  },
+  "languageError": {
+    "message": "無法儲存語言，請再試一次。"
+  }
+}

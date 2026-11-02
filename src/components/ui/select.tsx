@@ -15,21 +15,24 @@ function SelectValue(props: ComponentProps<typeof SelectPrimitive.Value>) {
 function SelectTrigger({
   className,
   children,
+  iconOnly = false,
   ...props
-}: ComponentProps<typeof SelectPrimitive.Trigger>) {
+}: ComponentProps<typeof SelectPrimitive.Trigger> & { iconOnly?: boolean }) {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "flex h-8 min-w-32 items-center justify-between gap-2 rounded-lg border border-input bg-background px-2.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-placeholder:text-muted-foreground dark:bg-input/30 motion-reduce:transition-none",
+        "flex h-8 min-w-32 items-center justify-between gap-2 rounded-lg border border-input px-2.5 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 data-placeholder:text-muted-foreground motion-reduce:transition-none",
+        !iconOnly && "bg-background dark:bg-input/30",
+        iconOnly && "size-8 min-w-0 justify-center border-transparent bg-transparent px-0 hover:bg-muted focus-visible:ring-2 focus-visible:ring-inset data-[keyboard-focus=false]:focus-visible:border-transparent data-[keyboard-focus=false]:focus-visible:ring-0 [&>svg]:size-4",
         className,
       )}
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild>
+      {iconOnly ? null : <SelectPrimitive.Icon asChild>
         <ChevronDownIcon aria-hidden="true" className="size-4 text-muted-foreground" />
-      </SelectPrimitive.Icon>
+      </SelectPrimitive.Icon>}
     </SelectPrimitive.Trigger>
   );
 }
@@ -51,7 +54,7 @@ function SelectContent({
         )}
         {...props}
       >
-        <SelectPrimitive.Viewport className="p-1">
+        <SelectPrimitive.Viewport className="max-h-(--radix-select-content-available-height) overflow-y-auto p-1">
           {children}
         </SelectPrimitive.Viewport>
       </SelectPrimitive.Content>
@@ -83,4 +86,6 @@ function SelectItem({
   );
 }
 
-export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue };
+const SelectGroup = SelectPrimitive.Group;
+
+export { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue };

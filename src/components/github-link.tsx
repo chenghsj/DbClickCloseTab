@@ -1,6 +1,7 @@
 import { siGithub } from "simple-icons";
 
 import { cn } from "@/lib/utils";
+import { t } from "@/shared/i18n";
 
 const GITHUB_URL = "https://github.com/chenghsj/DbClickCloseTab";
 
@@ -14,7 +15,7 @@ export function GitHubLink({ className }: GitHubLinkProps) {
       href={GITHUB_URL}
       target="_blank"
       rel="noreferrer"
-      aria-label="View Double Middle-Click on GitHub"
+      aria-label={t("githubLabel")}
       className={cn(
         "inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 motion-reduce:transition-none",
         className,

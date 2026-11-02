@@ -6,6 +6,8 @@ import type { ExtensionSaveState } from "@/shared/settings-state";
 import {
   applyTheme,
   normalizeTheme,
+  prefersDarkTheme,
+  resolveTheme,
   type Theme,
 } from "@/shared/theme";
 
@@ -17,6 +19,7 @@ export function useThemeSetting(providedSettings?: ExtensionSettingsModule) {
   );
   const initialTheme = normalizeTheme(document.documentElement.dataset.theme);
   const [theme, setThemeState] = useState<Theme>(initialTheme);
+  const [prefersDark, setPrefersDark] = useState(prefersDarkTheme);
   const [loaded, setLoaded] = useState(false);
   const [saveState, setSaveState] = useState<ExtensionSaveState>("loading");
   const savedValue = useRef(initialTheme);
@@ -24,7 +27,11 @@ export function useThemeSetting(providedSettings?: ExtensionSettingsModule) {
 
   useEffect(() => {
     const colorScheme = window.matchMedia?.("(prefers-color-scheme: dark)");
-    const handleColorSchemeChange = () => applyTheme(themeRef.current);
+    const handleColorSchemeChange = () => {
+      setPrefersDark(colorScheme?.matches ?? false);
+      applyTheme(themeRef.current);
+    };
+    handleColorSchemeChange();
     colorScheme?.addEventListener("change", handleColorSchemeChange);
 
     return () => {
@@ -66,5 +73,5 @@ export function useThemeSetting(providedSettings?: ExtensionSettingsModule) {
       });
   }
 
-  return { loaded, saveState, setTheme, theme };
+  return { loaded, resolvedTheme: resolveTheme(theme, prefersDark), saveState, setTheme, theme };
 }

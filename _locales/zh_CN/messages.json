@@ -1,0 +1,112 @@
+{
+  "language": {
+    "message": "zh-Hans",
+    "description": "BCP 47 language tag for the translated document."
+  },
+  "extensionName": {
+    "message": "双击中键关闭标签页"
+  },
+  "extensionDescription": {
+    "message": "在网页上双击鼠标中键，即可关闭当前标签页。"
+  },
+  "shortName": {
+    "message": "双击中键关闭标签页"
+  },
+  "optionsTitle": {
+    "message": "双击中键关闭标签页设置"
+  },
+  "optionsSubtitle": {
+    "message": "自定义启用状态、外观和双击判定间隔。"
+  },
+  "enableExtension": {
+    "message": "启用扩展程序"
+  },
+  "enableHelp": {
+    "message": "允许双击鼠标中键关闭标签页。"
+  },
+  "enableError": {
+    "message": "无法更新启用状态，请重试。"
+  },
+  "theme": {
+    "message": "主题"
+  },
+  "switchToLight": { "message": "切换为浅色主题" },
+  "switchToDark": { "message": "切换为深色主题" },
+  "themeHelp": {
+    "message": "跟随系统，或选择固定的外观。"
+  },
+  "themeAuto": {
+    "message": "自动"
+  },
+  "themeLight": {
+    "message": "浅色"
+  },
+  "themeDark": {
+    "message": "深色"
+  },
+  "themeError": {
+    "message": "无法保存主题，请重试。"
+  },
+  "interval": {
+    "message": "双击间隔"
+  },
+  "intervalDrag": {
+    "message": "左右拖动即可调整"
+  },
+  "intervalHelp": {
+    "message": "$minimum$～$maximum$ 毫秒 · 拖动标签可调整。",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoading": {
+    "message": "正在加载设置…"
+  },
+  "saving": {
+    "message": "正在保存…"
+  },
+  "saved": {
+    "message": "已保存"
+  },
+  "intervalInvalid": {
+    "message": "请输入 $minimum$ 到 $maximum$ 之间的整数。",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoadError": {
+    "message": "无法加载已保存的间隔，请输入数值重试。"
+  },
+  "intervalSaveError": {
+    "message": "无法保存，请修改数值重试。"
+  },
+  "githubLabel": {
+    "message": "在 GitHub 查看双击中键关闭标签页"
+  },
+  "appearanceAndLanguage": {
+    "message": "外观与语言"
+  },
+  "languageLabel": {
+    "message": "语言"
+  },
+  "languageAuto": {
+    "message": "跟随浏览器"
+  },
+  "languageError": {
+    "message": "无法保存语言，请重试。"
+  }
+}

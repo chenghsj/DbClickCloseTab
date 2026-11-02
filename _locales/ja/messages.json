@@ -1,0 +1,112 @@
+{
+  "language": {
+    "message": "ja",
+    "description": "BCP 47 language tag for the translated document."
+  },
+  "extensionName": {
+    "message": "中ボタンをダブルクリックしてタブを閉じる"
+  },
+  "extensionDescription": {
+    "message": "マウスの中ボタンをダブルクリックすると、現在のタブを閉じられます。"
+  },
+  "shortName": {
+    "message": "中ボタンでタブを閉じる"
+  },
+  "optionsTitle": {
+    "message": "中ボタンでタブを閉じる — 設定"
+  },
+  "optionsSubtitle": {
+    "message": "有効・無効、外観、ダブルクリックの間隔を設定します。"
+  },
+  "enableExtension": {
+    "message": "拡張機能を有効化"
+  },
+  "enableHelp": {
+    "message": "中ボタンのダブルクリックでタブを閉じます。"
+  },
+  "enableError": {
+    "message": "有効・無効を変更できませんでした。もう一度お試しください。"
+  },
+  "theme": {
+    "message": "テーマ"
+  },
+  "switchToLight": { "message": "ライトテーマに切り替える" },
+  "switchToDark": { "message": "ダークテーマに切り替える" },
+  "themeHelp": {
+    "message": "システムに合わせるか、外観を指定します。"
+  },
+  "themeAuto": {
+    "message": "自動"
+  },
+  "themeLight": {
+    "message": "ライト"
+  },
+  "themeDark": {
+    "message": "ダーク"
+  },
+  "themeError": {
+    "message": "テーマを保存できませんでした。もう一度お試しください。"
+  },
+  "interval": {
+    "message": "ダブルクリック間隔"
+  },
+  "intervalDrag": {
+    "message": "左右にドラッグして調整"
+  },
+  "intervalHelp": {
+    "message": "$minimum$～$maximum$ ミリ秒 · ラベルをドラッグして調整。",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoading": {
+    "message": "設定を読み込み中…"
+  },
+  "saving": {
+    "message": "保存中…"
+  },
+  "saved": {
+    "message": "保存しました"
+  },
+  "intervalInvalid": {
+    "message": "$minimum$～$maximum$ の整数を入力してください。",
+    "placeholders": {
+      "minimum": {
+        "content": "$1",
+        "example": "100"
+      },
+      "maximum": {
+        "content": "$2",
+        "example": "1000"
+      }
+    }
+  },
+  "intervalLoadError": {
+    "message": "保存済みの間隔を読み込めませんでした。値を入力して再試行してください。"
+  },
+  "intervalSaveError": {
+    "message": "保存できませんでした。値を変更して再試行してください。"
+  },
+  "githubLabel": {
+    "message": "GitHub でこの拡張機能を見る"
+  },
+  "appearanceAndLanguage": {
+    "message": "外観と言語"
+  },
+  "languageLabel": {
+    "message": "言語"
+  },
+  "languageAuto": {
+    "message": "ブラウザーの言語"
+  },
+  "languageError": {
+    "message": "言語を保存できませんでした。もう一度お試しください。"
+  }
+}

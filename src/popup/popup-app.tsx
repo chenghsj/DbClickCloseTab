@@ -2,8 +2,8 @@ import { BrandHeader } from "@/components/brand-header";
 import { ExtensionEnabledField } from "@/components/extension-enabled-field";
 import { GitHubLink } from "@/components/github-link";
 import { IntervalSettingField } from "@/components/interval-setting-field";
-import { ThemeSettingField } from "@/components/theme-setting-field";
-import { Badge } from "@/components/ui/badge";
+import { SettingsNavigation, SettingsNavigationErrors } from "@/components/settings-navigation";
+import { useLanguageSetting } from "@/options/use-language-setting";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAutoSaveInterval } from "@/options/use-auto-save-interval";
 import { useExtensionEnabledSetting } from "@/options/use-extension-enabled-setting";
@@ -21,6 +21,8 @@ export function PopupApp({ settings: providedSettings }: PopupAppProps = {}) {
     useAutoSaveInterval({ settings });
   const extensionEnabledSetting = useExtensionEnabledSetting(settings);
   const themeSetting = useThemeSetting(settings);
+  const languageSetting = useLanguageSetting(settings, "popup");
+  const navigation = { themeSetting, languageSetting };
 
   return (
     <main className="w-[22rem] max-w-full bg-background p-2.5 text-foreground">
@@ -31,16 +33,13 @@ export function PopupApp({ settings: providedSettings }: PopupAppProps = {}) {
           iconClassName="size-7"
           className="gap-2 px-1"
         >
-          <Badge variant="secondary">
-            {extensionEnabledSetting.enabled ? "Ready" : "Paused"}
-          </Badge>
+          <SettingsNavigation {...navigation} />
         </BrandHeader>
+        <SettingsNavigationErrors {...navigation} />
 
         <Card size="sm" className="mt-1 w-full">
           <CardContent>
             <ExtensionEnabledField {...extensionEnabledSetting} compact />
-            <div className="my-3 border-t" />
-            <ThemeSettingField {...themeSetting} compact />
             <div className="my-3 border-t" />
             <IntervalSettingField
               compact

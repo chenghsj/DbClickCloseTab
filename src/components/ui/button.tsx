@@ -25,7 +25,7 @@ const buttonVariants = cva(
         default: "h-8 gap-1.5 px-2.5",
         sm: "h-7 gap-1 rounded-md px-2.5 text-xs",
         lg: "h-9 gap-1.5 px-3",
-        icon: "size-8",
+        icon: "size-8 focus-visible:ring-2 focus-visible:ring-inset data-[keyboard-focus=false]:focus-visible:border-transparent data-[keyboard-focus=false]:focus-visible:ring-0 [&>svg]:size-4",
       },
     },
     defaultVariants: {

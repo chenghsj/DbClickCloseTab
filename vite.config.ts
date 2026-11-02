@@ -1,6 +1,6 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import type { Plugin } from "vite";
 import { defineConfig } from "vitest/config";
@@ -9,6 +9,9 @@ const extensionAssetNames = [
   "manifest.json",
   "icon.png",
   "icon-disable.png",
+  ...readdirSync(new URL("./_locales/", import.meta.url)).map(
+    (locale) => `_locales/${locale}/messages.json`,
+  ),
 ];
 
 function extensionAssets(): Plugin {
